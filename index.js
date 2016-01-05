@@ -3,7 +3,7 @@ let http = require('http');
 let jade = require('jade');
 let auth = require('http-auth');
 let basic = auth.basic(
-  { realm: "Enter username and password." },
+  { realm: 'Enter username and password.' },
   (username, password, callback) => {
     callback(username === 'guest' && password === 'xaXZJQmE');
   });
