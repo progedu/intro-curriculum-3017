@@ -7,7 +7,7 @@ let basic = auth.basic(
   (username, password, callback) => {
     callback(username === 'guest' && password === 'xaXZJQmE');
   });
-var server = http.createServer(basic, (req, res) => {
+let server = http.createServer(basic, (req, res) => {
   console.info('Requested by ' + req.connection.remoteAddress);
     
   if (req.url === '/logout') {
