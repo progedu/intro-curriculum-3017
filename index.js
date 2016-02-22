@@ -30,19 +30,19 @@ let server = http.createServer(basic, (req, res) => {
         res.write(jade.renderFile('./form.jade', {
           path: req.url,
           firstItem: '焼き肉',
-          secondImtem: 'しゃぶしゃぶ'
+          secondItem: 'しゃぶしゃぶ'
         }));
       } else if (req.url === '/enquetes/rice-bread') {
         res.write(jade.renderFile('./form.jade', {
           path: req.url,
           firstItem: 'ごはん',
-          secondImtem: 'パン'
+          secondItem: 'パン'
         }));
       } else if (req.url === '/enquetes/sushi-pizza') {
         res.write(jade.renderFile('./form.jade', {
           path: req.url,
           firstItem: '寿司',
-          secondImtem: 'ピザ'
+          secondItem: 'ピザ'
         }));
       }
       res.end();
