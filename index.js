@@ -1,13 +1,13 @@
 'use strict';
-let http = require('http');
-let jade = require('jade');
-let auth = require('http-auth');
-let basic = auth.basic(
+const http = require('http');
+const jade = require('jade');
+const auth = require('http-auth');
+const basic = auth.basic(
   { realm: 'Enter username and password.' },
   (username, password, callback) => {
     callback(username === 'guest' && password === 'xaXZJQmE');
   });
-let server = http.createServer(basic, (req, res) => {
+const server = http.createServer(basic, (req, res) => {
   console.info('Requested by ' + req.connection.remoteAddress);
     
   if (req.url === '/logout') {
@@ -49,9 +49,9 @@ let server = http.createServer(basic, (req, res) => {
       break;
     case 'POST':
       req.on('data', (data) => {
-        let decoded = decodeURIComponent(data);
+        const decoded = decodeURIComponent(data);
         console.info('投稿: ' + decoded);
-        res.write('<!DOCTYPE html><html lang="jp"><body><h1>' +
+        res.write('<!DOCTYPE html><html lang="jp"><head><meta charset="utf-8"></head><body><h1>' +
           decoded + 'が投稿されました</h1></body></html>');
         res.end();
       });
@@ -65,7 +65,7 @@ let server = http.createServer(basic, (req, res) => {
 }).on('clientError', (e) => {
   console.error('Client Error', e);
 });
-let port = process.env.PORT || 8000;
+const port = process.env.PORT || 8000;
 server.listen(port, () => {
   console.info('Listening on ' + port);
 });
