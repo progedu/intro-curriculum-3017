@@ -12,10 +12,10 @@ const server = http.createServer(basic, (req, res) => {
     
   if (req.url === '/logout') {
     res.writeHead(401, {
-      'Content-Type': 'text/plain',
+      'Content-Type': 'text/html',
       'charset': 'utf-8'
     });
-    res.end('ログアウトしました');
+    res.end('<!DOCTYPE html><html lang="jp"><head><meta charset="utf-8"></head><body><h1>ログアウトしました</h1>');
     return;
   }
   

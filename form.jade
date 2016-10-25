@@ -3,13 +3,29 @@ html(lang="jp")
   head
     meta(charset="UTF-8")
     title アンケート
+    style.
+      *	{font-family:font-family: Helvetica , "游ゴシック" , "Yu Gothic" , sans-serif;}
+      body{background-color:#c5fbfb;}
+      .frm{background-color:#fff;margin:0 auto;width:400px;padding:30px 50px;border:2px #000 solid;border-radius: 30px;line-height:50px}
+
   body
-    h1 どちらが食べたいですか？
-    form(method="post", action="#{path}")
-      span 名前: 
-      input(type="text", name="name")
-      input(type="radio", name="favorite", value="#{firstItem}")
-      span #{firstItem} 
-      input(type="radio", name="favorite", value="#{secondItem}")
-      span #{secondItem} 
-      button(type="submit") 投稿
+    div(class="frm")
+      h1 どちらが食べたいですか？
+      form(method="post", action="#{path}")
+        span 名前: 
+        input(type="text", name="name")
+        br
+        span どっちかな？
+        br
+        input(type="radio", name="favorite", value="#{firstItem}")
+        span #{firstItem} 
+        input(type="radio", name="favorite", value="#{secondItem}")
+        span #{secondItem}
+        br
+        span 特にどんな#{toppingText}が好きですか？
+        br
+        input(type="text", name="topping" ,max-length="100", height="20px") 
+        br
+        button(type="submit") 投稿
+        br
+        a(href="/logout")ログアウト
