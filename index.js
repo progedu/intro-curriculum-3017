@@ -15,7 +15,7 @@ const server = http.createServer(basic, (req, res) => {
       'Content-Type': 'text/plain',
       'charset': 'utf-8'
     });
-    res.end('ログアウトしました');
+    res.end('人生ログアウトしました＼(^o^)／');
     return;
   }
   
@@ -65,7 +65,7 @@ const server = http.createServer(basic, (req, res) => {
 }).on('clientError', (e) => {
   console.error('Client Error', e);
 });
-const port = process.env.PORT || 8000;
+const port = process.env.PORT || 8001;
 server.listen(port, () => {
   console.info('Listening on ' + port);
 });
