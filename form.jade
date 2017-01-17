@@ -3,13 +3,33 @@ html(lang="jp")
   head
     meta(charset="UTF-8")
     title アンケート
+    style.
+      body {
+        width: 400px;
+        margin: 0 auto;
+      }
+      .logout {
+        text-align: right;
+      }
+      h1 {
+        margin-bottom: 5px;
+      }
+      button {
+        margin-top: 5px;
+        margin-left: 5px;
+      }
+
   body
+    .logout
+      a(href="/logout") ログアウト
     h1 どちらが食べたいですか？
-    form(method="post", action="#{path}")
-      span 名前: 
-      input(type="text", name="name")
-      input(type="radio", name="favorite", value="#{firstItem}")
-      span #{firstItem} 
-      input(type="radio", name="favorite", value="#{secondItem}")
-      span #{secondItem} 
-      button(type="submit") 投稿
+    .form
+      form(method="post", action="#{path}")
+        input(type="radio", name="favorite", value="#{firstItem}")
+        span #{firstItem} 
+        input(type="radio", name="favorite", value="#{secondItem}")
+        span #{secondItem} 
+        br
+        span 名前: 
+        input(type="text", name="name")
+        button(type="submit") 投稿
