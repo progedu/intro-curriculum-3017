@@ -9,7 +9,7 @@ const basic = auth.basic(
   });
 const server = http.createServer(basic, (req, res) => {
   console.info('Requested by ' + req.connection.remoteAddress);
-    
+
   if (req.url === '/logout') {
     res.writeHead(401, {
       'Content-Type': 'text/plain',
@@ -18,7 +18,7 @@ const server = http.createServer(basic, (req, res) => {
     res.end('ログアウトしました');
     return;
   }
-  
+
   res.writeHead(200, {
     'Content-Type': 'text/html',
     'charset': 'utf-8'
@@ -65,7 +65,7 @@ const server = http.createServer(basic, (req, res) => {
 }).on('clientError', (e) => {
   console.error('Client Error', e);
 });
-const port = process.env.PORT || 8000;
+const port = process.env.PORT || 8080;
 server.listen(port, () => {
   console.info('Listening on ' + port);
 });
