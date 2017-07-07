@@ -5,7 +5,7 @@ const auth = require('http-auth');
 const basic = auth.basic(
   { realm: 'Enter username and password.' },
   (username, password, callback) => {
-    callback(username === 'guest' && password === 'xaXZJQmE');
+    callback(username === 'guest' && password === 'kanryaku');
   });
 const server = http.createServer(basic, (req, res) => {
   console.info('Requested by ' + req.connection.remoteAddress);
