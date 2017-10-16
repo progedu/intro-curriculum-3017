@@ -3,8 +3,16 @@ html(lang="jp")
   head
     meta(charset="UTF-8")
     title アンケート
+    style.
+      .header-container{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
   body
-    h1 どちらが食べたいですか？
+    .header-container
+      h1 どちらが食べたいですか？
+      a(href="/logout") ログアウト
     form(method="post", action="#{path}")
       span 名前: 
       input(type="text", name="name")
