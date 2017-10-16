@@ -5,7 +5,7 @@ const auth = require('http-auth');
 const basic = auth.basic(
   { realm: 'Enter username and password.' },
   (username, password, callback) => {
-    callback(username === 'guest' && password === 'xaXZJQmE');
+    callback(username === 'guest' && password === '123456789');   //練習用なので、あからさまにバレソウなパスワードに変更（教材用のバージョンだと、ほんの少しだけ手間なので。良いこの皆さんは真似しちゃだめよ、ナンテネ。）
   });
 const server = http.createServer(basic, (req, res) => {
   console.info('Requested by ' + req.connection.remoteAddress);
