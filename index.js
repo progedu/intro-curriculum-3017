@@ -12,16 +12,14 @@ const server = http.createServer(basic, (req, res) => {
     
   if (req.url === '/logout') {
     res.writeHead(401, {
-      'Content-Type': 'text/plain',
-      'charset': 'utf-8'
+      'Content-Type': 'text/plain; charset=utf-8'
     });
     res.end('ログアウトしました');
     return;
   }
   
   res.writeHead(200, {
-    'Content-Type': 'text/html',
-    'charset': 'utf-8'
+    'Content-Type': 'text/html; charset=utf-8'
   });
 
   switch (req.method) {
@@ -48,8 +46,12 @@ const server = http.createServer(basic, (req, res) => {
       res.end();
       break;
     case 'POST':
-      req.on('data', (data) => {
-        const decoded = decodeURIComponent(data);
+      let body = [];
+      req.on('data', (chunk) => {
+        body.push(chunk);
+      }).on('end', () => {
+        body = Buffer.concat(body).toString();
+        const decoded = decodeURIComponent(body);
         console.info('投稿: ' + decoded);
         res.write('<!DOCTYPE html><html lang="jp"><head><meta charset="utf-8"></head><body><h1>' +
           decoded + 'が投稿されました</h1></body></html>');
