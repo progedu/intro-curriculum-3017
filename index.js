@@ -5,11 +5,11 @@ const auth = require('http-auth');
 const basic = auth.basic(
   { realm: 'Enter username and password.' },
   (username, password, callback) => {
-    callback(username === 'guest' && password === 'xaXZJQmE');
+    callback(username === 'shin' && password === 'shinshin');
   });
 const server = http.createServer(basic, (req, res) => {
   console.info('Requested by ' + req.connection.remoteAddress);
-    
+
   if (req.url === '/logout') {
     res.writeHead(401, {
       'Content-Type': 'text/plain; charset=utf-8'
@@ -17,30 +17,30 @@ const server = http.createServer(basic, (req, res) => {
     res.end('ログアウトしました');
     return;
   }
-  
+
   res.writeHead(200, {
     'Content-Type': 'text/html; charset=utf-8'
   });
 
   switch (req.method) {
     case 'GET':
-      if (req.url === '/enquetes/yaki-shabu') {
+      if (req.url === '/enquetes/long-short') {
         res.write(jade.renderFile('./form.jade', {
           path: req.url,
-          firstItem: '焼き肉',
-          secondItem: 'しゃぶしゃぶ'
+          firstItem: 'ロングヘア',
+          secondItem: 'ショートヘア'
         }));
-      } else if (req.url === '/enquetes/rice-bread') {
+      } else if (req.url === '/enquetes/pants-skirt') {
         res.write(jade.renderFile('./form.jade', {
           path: req.url,
-          firstItem: 'ごはん',
-          secondItem: 'パン'
+          firstItem: 'パンツ',
+          secondItem: 'スカート'
         }));
-      } else if (req.url === '/enquetes/sushi-pizza') {
+      } else if (req.url === '/enquetes/sneaker-heel') {
         res.write(jade.renderFile('./form.jade', {
           path: req.url,
-          firstItem: '寿司',
-          secondItem: 'ピザ'
+          firstItem: ' スニーカー',
+          secondItem: 'ヒール'
         }));
       }
       res.end();
