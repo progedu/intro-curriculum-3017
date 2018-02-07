@@ -3,13 +3,29 @@ html(lang="jp")
   head
     meta(charset="UTF-8")
     title アンケート
+    style.
+       body{background-color:#c5fbfb;}
+       .frm{background-color:#FFF8DC; margin:0 auto; width:500px; padding:30px 50px; border:5px #008000 outset; border-radius: 30px; line-height:50px}
+
+
   body
-    h1 どちらが食べたいですか？
-    form(method="post", action="#{path}")
-      span 名前: 
-      input(type="text", name="name")
-      input(type="radio", name="favorite", value="#{firstItem}")
-      span #{firstItem} 
-      input(type="radio", name="favorite", value="#{secondItem}")
-      span #{secondItem} 
-      button(type="submit") 投稿
+    div(class="frm")
+      h1 どちらが食べたいですか？
+      form(method="post", action="#{path}")
+        span 名前: 
+        input(type="text", name="name")
+        input(type="radio", name="favorite", value="#{firstItem}")
+        span #{firstItem} 
+        input(type="radio", name="favorite", value="#{secondItem}")
+        span #{secondItem} 
+        button(type="submit") 投稿
+        p 焼肉としゃぶしゃぶのどちらが好きかアンケートは→
+          b
+            a(href="/enquetes/yaki-shabu") こちら
+        p ごはんとパンのどちらが好きかアンケートは→
+          b
+            a(href="/enquetes/rice-bread") こちら
+        p 寿司かピザどちらが好きかアンケートは→
+          b
+            a(href="/enquetes/sushi-pizza") こちら
+      button(type="button", onclick="location.href='/logout'") ログアウト
