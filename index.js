@@ -1,6 +1,6 @@
 'use strict';
 const http = require('http');
-const jade = require('jade');
+const pug = require('pug');
 const auth = require('http-auth');
 const basic = auth.basic(
   { realm: 'Enter username and password.' },
@@ -25,19 +25,19 @@ const server = http.createServer(basic, (req, res) => {
   switch (req.method) {
     case 'GET':
       if (req.url === '/enquetes/yaki-shabu') {
-        res.write(jade.renderFile('./form.jade', {
+        res.write(pug.renderFile('./form.pug', {
           path: req.url,
           firstItem: '焼き肉',
           secondItem: 'しゃぶしゃぶ'
         }));
       } else if (req.url === '/enquetes/rice-bread') {
-        res.write(jade.renderFile('./form.jade', {
+        res.write(pug.renderFile('./form.pug', {
           path: req.url,
           firstItem: 'ごはん',
           secondItem: 'パン'
         }));
       } else if (req.url === '/enquetes/sushi-pizza') {
-        res.write(jade.renderFile('./form.jade', {
+        res.write(pug.renderFile('./form.pug', {
           path: req.url,
           firstItem: '寿司',
           secondItem: 'ピザ'
