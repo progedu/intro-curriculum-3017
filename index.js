@@ -1,12 +1,19 @@
 'use strict';
 const http = require('http');
 const pug = require('pug');
+
+// Basic認証に必要なモジュールの読み込み
 const auth = require('http-auth');
+// Basic認証の設定
 const basic = auth.basic(
+  // basic認証で覆う(保護する)範囲の指定
   { realm: 'Enquetes Area.' },
+  // ユーザー名とパスワードの設定
   (username, password, callback) => {
     callback(username === 'guest' && password === 'xaXZJQmE');
   });
+
+// 第一引数にbasicオブジェクトを渡すことで、basic認証に対応できる
 const server = http.createServer(basic, (req, res) => {
   console.info('Requested by ' + req.connection.remoteAddress);
 
