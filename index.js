@@ -24,7 +24,11 @@ const server = http.createServer(basic, (req, res) => {
 
   switch (req.method) {
     case 'GET':
-      if (req.url === '/enquetes/yaki-shabu') {
+      if (req.url === '/'){
+        res.write(pug.renderFile('./index.pug', {
+
+        }));
+      } else if (req.url === '/enquetes/yaki-shabu') {
         res.write(pug.renderFile('./form.pug', {
           path: req.url,
           firstItem: '焼き肉',
@@ -54,7 +58,7 @@ const server = http.createServer(basic, (req, res) => {
         const decoded = decodeURIComponent(body);
         console.info('投稿: ' + decoded);
         res.write('<!DOCTYPE html><html lang="jp"><head><meta charset="utf-8"></head><body><h1>' +
-          decoded + 'が投稿されました</h1></body></html>');
+          decoded + 'が投稿されました</h1><a href="/">トップへ戻る</a></body></html>');
         res.end();
       });
       break;
