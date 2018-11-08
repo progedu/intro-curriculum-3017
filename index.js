@@ -43,7 +43,7 @@ const server = http.createServer(basic, (req, res) => {
           secondItem: 'ピザ'
         }));
       }
-      res.end();
+      res.end('アンケートページの表示終了');
       break;
     case 'POST':
       let body = [];
@@ -55,7 +55,7 @@ const server = http.createServer(basic, (req, res) => {
         console.info('投稿: ' + decoded);
         res.write('<!DOCTYPE html><html lang="jp"><head><meta charset="utf-8"></head><body><h1>' +
           decoded + 'が投稿されました</h1></body></html>');
-        res.end();
+        res.end('アンケート投稿終了');
       });
       break;
     default:
