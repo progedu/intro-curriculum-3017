@@ -1,0 +1,43 @@
+Arguments: 
+  /home/vagrant/.nodebrew/node/v8.9.4/bin/node /home/vagrant/.yarn/bin/yarn.js install
+
+PATH: 
+  /home/vagrant/.nodebrew/current/bin:/home/vagrant/bin:/home/vagrant/.local/bin:/home/vagrant/.yarn/bin:/home/vagrant/.config/yarn/global/node_modules/.bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+
+Yarn version: 
+  1.10.1
+
+Node version: 
+  8.9.4
+
+Platform: 
+  linux x64
+
+Trace: 
+  Error: EPROTO: protocol error, symlink '../../../acorn/bin/acorn' -> '/home/vagrant/workspace/intro-curriculum-3017/node_modules/acorn-globals/node_modules/.bin/acorn'
+
+npm manifest: 
+  {
+    "name": "node-js-http",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+      "http-auth": "^3.2.3",
+      "pug": "^2.0.0-rc.4"
+    },
+    "engines": {
+      "node": "8.9.4"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
