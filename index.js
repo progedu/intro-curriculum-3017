@@ -5,16 +5,16 @@ const auth = require('http-auth');
 const basic = auth.basic(
   { realm: 'Enquetes Area.' },
   (username, password, callback) => {
-    callback(username === 'guest' && password === 'xaXZJQmE');
+    callback(username === 'admin' && password === 'inositol');
   });
 const server = http.createServer(basic, (req, res) => {
   console.info('Requested by ' + req.connection.remoteAddress);
 
   if (req.url === '/logout') {
     res.writeHead(401, {
-      'Content-Type': 'text/plain; charset=utf-8'
+      'Content-Type': 'text/html; charset=utf-8'
     });
-    res.end('ログアウトしました');
+    res.end('<h1>ログアウトしました</h1>');
     return;
   }
 
