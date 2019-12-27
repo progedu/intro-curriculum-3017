@@ -1,5 +1,5 @@
 doctype html
-html(lang="jp")
+html(lang="ja")
   head
     meta(charset="UTF-8")
     title アンケート
@@ -8,8 +8,9 @@ html(lang="jp")
     form(method="post", action="#{path}")
       span 名前: 
       input(type="text", name="name")
-      input(type="radio", name="favorite", value="#{firstItem}")
+      input(type="radio", name="favorite", value=firstItem)
       span #{firstItem} 
-      input(type="radio", name="favorite", value="#{secondItem}")
+      input(type="radio", name="favorite", value=secondItem)
       span #{secondItem} 
       button(type="submit") 投稿
+    a(href="/logout") ログアウト
