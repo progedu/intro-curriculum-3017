@@ -14,34 +14,41 @@ const server = http.createServer(basic, (req, res) => {
     res.writeHead(401, {
       'Content-Type': 'text/plain; charset=utf-8'
     });
+    //console.debug('私のchromeブラウザでは表示されませんがsafariならログアウトが表示されます');
     res.end('ログアウトしました');
     return;
+  }
+
+  function resWrite(firstItem,secondItem)
+  {
+    res.write(pug.renderFile('./form.pug', {
+      path: req.url,
+      firstItem: firstItem,
+      secondItem: secondItem
+    }));
+    res.end();
   }
 
   res.writeHead(200, {
     'Content-Type': 'text/html; charset=utf-8'
   });
 
+
   switch (req.method) {
     case 'GET':
-      if (req.url === '/enquetes/yaki-shabu') {
-        res.write(pug.renderFile('./form.pug', {
-          path: req.url,
-          firstItem: '焼き肉',
-          secondItem: 'しゃぶしゃぶ'
-        }));
-      } else if (req.url === '/enquetes/rice-bread') {
-        res.write(pug.renderFile('./form.pug', {
-          path: req.url,
-          firstItem: 'ごはん',
-          secondItem: 'パン'
-        }));
-      } else if (req.url === '/enquetes/sushi-pizza') {
-        res.write(pug.renderFile('./form.pug', {
-          path: req.url,
-          firstItem: '寿司',
-          secondItem: 'ピザ'
-        }));
+      switch ( req.url){
+        case '/enquetes/yaki-shabu':
+          resWrite('焼き肉','しゃぶしゃぶ');
+          break;
+        case '/enquetes/rice-bread':
+          resWrite('ごはん','パン');
+          break;
+        case '/':
+          resWrite('XBOX0ne','PS4');
+          break;
+        case '/enquetes/sushi-pizza':
+          resWrite('寿司','ピザ');
+          break;
       }
       res.end();
       break;
