@@ -1,13 +1,17 @@
 'use strict';
-const http = require('http');
-const pug = require('pug');
-const auth = require('http-auth');
-const basic = auth.basic(
-  { realm: 'Enquetes Area.' },
-  (username, password, callback) => {
-    callback(username === 'guest' && password === 'xaXZJQmE');
-  });
-const server = http.createServer(basic, (req, res) => {
+
+var http = require('http');
+
+var pug = require('pug');
+
+var auth = require('http-auth');
+
+var basic = auth.basic({
+  realm: 'Enquetes Area.'
+}, function (username, password, callback) {
+  callback(username === 'guest' && password === 'xaXZJQmE');
+});
+var server = http.createServer(basic, function (req, res) {
   console.info('Requested by ' + req.connection.remoteAddress);
 
   if (req.url === '/logout') {
@@ -43,29 +47,31 @@ const server = http.createServer(basic, (req, res) => {
           secondItem: 'ピザ'
         }));
       }
+
       res.end();
       break;
+
     case 'POST':
-      let rawData = '';
-      req.on('data', (chunk) => {
+      var rawData = '';
+      req.on('data', function (chunk) {
         rawData = rawData + chunk;
-      }).on('end', () => {
-        const decoded = decodeURIComponent(rawData);
+      }).on('end', function () {
+        var decoded = decodeURIComponent(rawData);
         console.info('投稿: ' + decoded);
-        res.write('<!DOCTYPE html><html lang="ja"><body><h1>' +
-          decoded + 'が投稿されました</h1></body></html>');
+        res.write('<!DOCTYPE html><html lang="ja"><body><h1>' + decoded + 'が投稿されました</h1></body></html>');
         res.end();
       });
       break;
+
     default:
       break;
   }
-}).on('error', (e) => {
+}).on('error', function (e) {
   console.error('Server Error', e);
-}).on('clientError', (e) => {
+}).on('clientError', function (e) {
   console.error('Client Error', e);
 });
-const port = process.env.PORT || 8000;
-server.listen(port, () => {
+var port = process.env.PORT || 8000;
+server.listen(port, function () {
   console.info('Listening on ' + port);
 });
