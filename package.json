@@ -9,10 +9,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "http-auth": "^2.2.8",
-    "jade": "^1.11.0"
+    "http-auth": "^3.2.3",
+    "pug": "^2.0.0-rc.4"
   },
   "engines": {
-    "node": "8.9.4"
+    "node": "~10"
   }
 }
