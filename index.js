@@ -5,11 +5,10 @@ const auth = require('http-auth');
 const basic = auth.basic(
   { realm: 'Enquetes Area.' },
   (username, password, callback) => {
-    callback(username === 'guest' && password === 'xaXZJQmE');
+      callback(username === 'guest' && password === 'xaXZJQmE');
   });
 const server = http.createServer(basic, (req, res) => {
   console.info('Requested by ' + req.connection.remoteAddress);
-
   if (req.url === '/logout') {
     res.writeHead(401, {
       'Content-Type': 'text/plain; charset=utf-8'
@@ -51,7 +50,7 @@ const server = http.createServer(basic, (req, res) => {
         rawData = rawData + chunk;
       }).on('end', () => {
         const decoded = decodeURIComponent(rawData);
-        console.info('[' + now + '] 投稿: ' + decoded);
+        console.info('投稿: ' + decoded);
         res.write('<!DOCTYPE html><html lang="ja"><body><h1>' +
           decoded + 'が投稿されました</h1></body></html>');
         res.end();
