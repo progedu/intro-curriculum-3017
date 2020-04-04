@@ -1,6 +1,7 @@
 'use strict';
 const http = require('http');
 const pug = require('pug');
+const now = Date();
 const auth = require('http-auth');
 const basic = auth.basic(
   { realm: 'Enquetes Area.' },
