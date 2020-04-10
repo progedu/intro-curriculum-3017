@@ -2,6 +2,7 @@
 const http = require('http');
 const pug = require('pug');
 const auth = require('http-auth');
+const now = new Date();
 const basic = auth.basic(
   { realm: 'Enquetes Area.' },
   (username, password, callback) => {
