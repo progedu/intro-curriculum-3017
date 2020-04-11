@@ -8,6 +8,7 @@ const basic = auth.basic(
     callback(username === 'guest' && password === 'xaXZJQmE');
   });
 const server = http.createServer(basic, (req, res) => {
+  const now = new Date();
   console.info('Requested by ' + req.connection.remoteAddress);
 
   if (req.url === '/logout') {
