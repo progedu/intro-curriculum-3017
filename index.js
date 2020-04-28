@@ -19,6 +19,16 @@ const server = http.createServer(basic, (req, res) => {
     return;
   }
 
+  if (req.url === '/enquetes'){
+    res.write('<!DOCTYPE html><html lang="ja"><head><meta charset="UTF-8"></head><body>'
+     +'<h1>食べたいものアンケート</h1><ul>'
+     +'<li>（アンケート1）焼き肉？ それとも しゃぶしゃぶ？ &emsp;<a href="/enquetes/yaki-shabu">アンケート1に回答する</a></li>'
+     +'<li>（アンケート2）ごはん？ それとも パン？ &emsp;<a href="/enquetes/rice-bread">アンケート2に回答する</a></li>'
+     +'<li>（アンケート3）すし？ それとも ピザ？ &emsp;<a href="/enquetes/sushi-pizza">アンケート3に回答する</a></li>'
+     +'</ul></body></html>');
+  res.end();
+  }
+
   res.writeHead(200, {
     'Content-Type': 'text/html; charset=utf-8'
   });
@@ -52,7 +62,7 @@ const server = http.createServer(basic, (req, res) => {
         rawData = rawData + chunk;
       }).on('end', () => {
         const decoded = decodeURIComponent(rawData);
-        console.info('[' + now + '] 投稿: ' + decoded);
+        console.info('投稿: ' + decoded);
         res.write('<!DOCTYPE html><html lang="ja"><body><h1>' +
           decoded + 'が投稿されました</h1></body></html>');
         res.end();
