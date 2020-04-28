@@ -12,10 +12,19 @@ const server = http.createServer(basic, (req, res) => {
   console.info('Requested by ' + req.connection.remoteAddress);
 
   if (req.url === '/logout') {
+    console.info('logout user: ' + req.user);
     res.writeHead(401, {
-      'Content-Type': 'text/plain; charset=utf-8'
+      'Content-Type': 'text/html; charset=utf-8'
     });
-    res.end('ログアウトしました');
+    res.end(`<!DOCTYPE html>
+            <html lang="ja">
+              <body>
+                <h1>ログアウトしました</h1>
+                <a href="/enquetes/yaki-shabu">焼き肉orしゃぶしゃぶ</a><br>
+                <a href="/enquetes/rice-bread">ごはんorパン</a><br>
+                <a href="/enquetes/sushi-pizza">寿司orピザ</a><br>
+              </body>
+            </html>`);
     return;
   }
 
