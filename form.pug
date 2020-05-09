@@ -5,6 +5,7 @@ html(lang="jp")
     title アンケート
   body
     h1 どちらが食べたいですか？
+    a(href="/logout") ログアウト
     form(method="post", action=path)
       span 名前: 
       input(type="text", name="name")
@@ -13,3 +14,4 @@ html(lang="jp")
       input(type="radio", name="favorite", value=secondItem)
       span #{secondItem} 
       button(type="submit") 投稿
+      
