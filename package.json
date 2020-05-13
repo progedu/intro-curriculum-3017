@@ -9,8 +9,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "http-auth": "^3.2.3",
-    "pug": "^2.0.0-rc.4"
+    "http-auth": "3.2.3",
+    "pug": "2.0.0-rc.4"
   },
   "engines": {
     "node": "~10"
