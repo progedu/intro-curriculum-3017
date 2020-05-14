@@ -5,7 +5,7 @@ const auth = require('http-auth');
 const basic = auth.basic(
   { realm: 'Enquetes Area.' },
   (username, password, callback) => {
-    callback(username === 'guest' && password === 'xaXZJQmE');
+    callback(username === 'sarara' && password === 'pokemon');
   });
 const server = http.createServer(basic, (req, res) => {
   const now = new Date();
@@ -53,8 +53,7 @@ const server = http.createServer(basic, (req, res) => {
       }).on('end', () => {
         const decoded = decodeURIComponent(rawData);
         console.info('[' + now + '] 投稿: ' + decoded);
-        res.write('<!DOCTYPE html><html lang="ja"><body><h1>' +
-          decoded + 'が投稿されました</h1></body></html>');
+        res.write('投稿されました(^_-)-☆');
         res.end();
       });
       break;
