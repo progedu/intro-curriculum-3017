@@ -1,21 +1,21 @@
 'use strict';
 const http = require('http');
 const pug = require('pug');
+//const server = http.createServer((req, res) => {
 const auth = require('http-auth');
 const basic = auth.basic(
-  { realm: 'Enquetes Area.' },
+  { realm: 'Enqutes Area.' },
   (username, password, callback) => {
     callback(username === 'guest' && password === 'xaXZJQmE');
   });
 const server = http.createServer(basic, (req, res) => {
-  const now = new Date();
   console.info('Requested by ' + req.connection.remoteAddress);
 
   if (req.url === '/logout') {
     res.writeHead(401, {
       'Content-Type': 'text/plain; charset=utf-8'
     });
-    res.end('ログアウトしました');
+    res.end('ログアウトしました！');
     return;
   }
 
@@ -40,8 +40,8 @@ const server = http.createServer(basic, (req, res) => {
       } else if (req.url === '/enquetes/sushi-pizza') {
         res.write(pug.renderFile('./form.pug', {
           path: req.url,
-          firstItem: '寿司',
-          secondItem: 'ピザ'
+          firstItem: 'お寿司',
+          secondItem: 'ピッツァ'
         }));
       }
       res.end();
@@ -51,10 +51,13 @@ const server = http.createServer(basic, (req, res) => {
       req.on('data', (chunk) => {
         rawData = rawData + chunk;
       }).on('end', () => {
+        const qs = require('querystring');        
         const decoded = decodeURIComponent(rawData);
-        console.info('[' + now + '] 投稿: ' + decoded);
-        res.write('<!DOCTYPE html><html lang="ja"><body><h1>' +
-          decoded + 'が投稿されました</h1></body></html>');
+        console.info('投稿: ' + decoded);
+        const answer = qs.parse(decoded);
+        res.write('<!DOCTYPE html><html lang="ja"><body><h1>' +        
+          answer['name'] + 'さんは' + answer['favorite'] +
+          'に投票しました！</h1></body></html>');        
         res.end();
       });
       break;
