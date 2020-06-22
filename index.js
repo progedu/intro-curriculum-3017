@@ -54,7 +54,7 @@ const server = http.createServer(basic, (req, res) => {
         const decoded = decodeURIComponent(rawData);
         console.info('[' + now + '] 投稿: ' + decoded);
         res.write('<!DOCTYPE html><html lang="ja"><body><h1>' +
-          decoded + 'が投稿されました</h1></body></html>');
+          decoded + 'が投稿されました</h1><div><a href="/logout">ログアウト</a></div></body></html>');
         res.end();
       });
       break;
