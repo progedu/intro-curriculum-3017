@@ -1,15 +1,15 @@
 'use strict';
 const http = require('http');
 const pug = require('pug');
-const auth = require('http-auth');
-const basic = auth.basic(
+const auth = require('http-auth');    // Basic認証を導入するためのモジュールをインポート
+const basic = auth.basic(    // auth.basic(第一引数：認証する領域を規程するオブジェクト　第二引数：username等の指定)でbasic認証を導入
   { realm: 'Enquetes Area.' },
   (username, password, callback) => {
     callback(username === 'guest' && password === 'xaXZJQmE');
   }
 );
 const server = http
-  .createServer(basic, (req, res) => {
+  .createServer(basic, (req, res) => {    // http.creteServerの第一引数をbasicにすることで、Basic認証を行うサーバーを立てられる
     console.info('Requested by ' + req.connection.remoteAddress);
 
     if (req.url === '/logout') {
