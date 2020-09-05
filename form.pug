@@ -4,12 +4,13 @@ html(lang="jp")
     meta(charset="UTF-8")
     title アンケート
   body
+    a(href="/logout") ログアウト
     h1 どちらが食べたいですか？
     form(method="post", action=path)
-      span 名前: 
+      span 名前:
       input(type="text", name="name")
       input(type="radio", name="favorite", value=firstItem)
-      span #{firstItem} 
+      span #{firstItem}
       input(type="radio", name="favorite", value=secondItem)
-      span #{secondItem} 
+      span #{secondItem}
       button(type="submit") 投稿
