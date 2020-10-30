@@ -13,7 +13,15 @@ html(lang="jp")
       input(type="radio", name="favorite", value=secondItem)
       span #{secondItem} 
       button(type="submit") 投稿
-      br
-      br
-      br
+    p 焼肉としゃぶしゃぶのどちらが好きかアンケートは→
+     br
+     a(href="/enquetes/yaki-shabu") こちら
+    p ごはんとパンのどちらが好きかアンケートは→
+     br
+     a(href="/enquetes/rice-bread") こちら
+    p 寿司かピザどちらが好きかアンケートは→
+     br
+     a(href="/enquetes/sushi-pizza") こちら
+    br
+    br
     button(type="button", onclick="location.href='/logout'") ログアウト
