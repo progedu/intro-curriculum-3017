@@ -26,28 +26,28 @@ const server = http
 
     switch (req.method) {
       case 'GET':
-        if (req.url === '/enquetes/yaki-shabu') {
+        if (req.url === '/enquetes/popular-character') {
           res.write(
             pug.renderFile('./form.pug', {
               path: req.url,
-              firstItem: '焼き肉',
-              secondItem: 'しゃぶしゃぶ'
+              firstItem: 'ピカチュウ',
+              secondItem: 'ジバニャン'
             })
           );
-        } else if (req.url === '/enquetes/rice-bread') {
+        } else if (req.url === '/enquetes/dora-bread') {
           res.write(
             pug.renderFile('./form.pug', {
               path: req.url,
-              firstItem: 'ごはん',
-              secondItem: 'パン'
+              firstItem: 'ドラえもん',
+              secondItem: 'アンパンマン'
             })
           );
-        } else if (req.url === '/enquetes/sushi-pizza') {
+        } else if (req.url === '/enquetes/tokusatsu') {
           res.write(
             pug.renderFile('./form.pug', {
               path: req.url,
-              firstItem: '寿司',
-              secondItem: 'ピザ'
+              firstItem: '仮面ライダーやウルトラマンなどの個人ヒーロー',
+              secondItem: 'スーパー戦隊やプリキュアなどの団体ヒーロー'
             })
           );
         }

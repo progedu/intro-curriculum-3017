@@ -4,12 +4,18 @@ html(lang="jp")
     meta(charset="UTF-8")
     title アンケート
   body
-    h1 どちらが食べたいですか？
+    h1 どちらが良いですか？
     form(method="post", action=path)
       span 名前: 
       input(type="text", name="name")
+      p
       input(type="radio", name="favorite", value=firstItem)
       span #{firstItem} 
       input(type="radio", name="favorite", value=secondItem)
       span #{secondItem} 
+      p
       button(type="submit") 投稿
+      p
+      img(src="https://pbs.twimg.com/media/ERzKBHFXkAATHZF?format=jpg&name=large", alt="どうでも良い画像")
+      p
+      a(href="/logout") ログアウト
