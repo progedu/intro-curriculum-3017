@@ -14,9 +14,10 @@ const server = http
 
     if (req.url === '/logout') {
       res.writeHead(401, {
-        'Content-Type': 'text/plain; charset=utf-8'
+        'Content-Type': 'text/html; charset=utf-8'
       });
-      res.end('ログアウトしました');
+      res.write('<!DOCTYPE html><html lang="ja"><body><h3>ログアウトしました</h3><a href="../enquetes/yaki-shabu">アンケートにもどる</a></body></html>');
+      res.end();
       return;
     }
 
