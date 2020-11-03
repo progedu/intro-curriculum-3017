@@ -10,7 +10,7 @@ const basic = auth.basic(
 );
 const server = http
   .createServer(basic, (req, res) => {
-    console.info('Requested by ' + req.connection.remoteAddress);
+    console.info(`Requested by ${req.connection.remoteAddress}`);
 
     if (req.url === '/logout') {
       res.writeHead(401, {
@@ -19,25 +19,27 @@ const server = http
       res.end('ログアウトしました');
       return;
     }
-
+    
     res.writeHead(200, {
       'Content-Type': 'text/html; charset=utf-8'
     });
 
     switch (req.method) {
       case 'GET':
-        if (req.url === '/enquetes/yaki-shabu') {
+        if (req.url === '/enquetes/trump-biden') {
           res.write(
             pug.renderFile('./form.pug', {
               path: req.url,
-              firstItem: '焼き肉',
-              secondItem: 'しゃぶしゃぶ'
+              title: 'ト〇ンプ派、バ〇デン派、どっち？',
+              firstItem: 'ト〇ンプ',
+              secondItem: 'バ〇イデン'
             })
           );
         } else if (req.url === '/enquetes/rice-bread') {
           res.write(
             pug.renderFile('./form.pug', {
               path: req.url,
+              title: 'ご飯とパンどっちが好き？',
               firstItem: 'ごはん',
               secondItem: 'パン'
             })
@@ -46,6 +48,7 @@ const server = http
           res.write(
             pug.renderFile('./form.pug', {
               path: req.url,
+              title: '寿司とピザどっちが好き？',
               firstItem: '寿司',
               secondItem: 'ピザ'
             })
