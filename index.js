@@ -12,6 +12,15 @@ const server = http
   .createServer(basic, (req, res) => {
     console.info('Requested by ' + req.connection.remoteAddress);
 
+    if (req.url === '/') {
+      res.writeHead(200, {
+        'content-Type': 'text/html; charset=uft-8'
+      });
+      res.write(pug.renderFile('./index.pug'));
+      res.end();
+      return;
+    }
+
     if (req.url === '/logout') {
       res.writeHead(401, {
         'Content-Type': 'text/plain; charset=utf-8'
