@@ -12,6 +12,16 @@ const server = http
   .createServer(basic, (req, res) => {
     console.info('Requested by ' + req.connection.remoteAddress);
 
+    if (req.url === '/') {
+      res.writeHead(200, {
+        'Content-Type': 'text/html; charset=utf-8'
+      });
+      res.write(
+        pug.renderFile('./index.pug'));
+      res.end();
+      return;     
+    }
+    
     if (req.url === '/logout') {
       res.writeHead(401, {
         'Content-Type': 'text/plain; charset=utf-8'
@@ -63,10 +73,10 @@ const server = http
             const qs = require('querystring');
             const answer = qs.parse(rawData);
             const body = answer['name'] + 'さんは' +
-              answer['favorite'] + 'に投票しました';
+              answer['favorite'] + 'に投票しました！';
             console.info(body);
             res.write('<!DOCTYPE html><html lang="ja"><body><h1>' +
-              body + '</h1></body></html>');
+              body + '</h1><br><a href="/logout">ログアウトする</a></body></html>');
             res.end();
           });
         break;
