@@ -6,12 +6,9 @@ const basic = auth.basic(
   { realm: 'Enquetes Area.' },
   (username, password, callback) => {
     callback(username === 'guest' && password === 'xaXZJQmE');
-  }
-);
-const server = http
-  .createServer(basic, (req, res) => {
+  });
+  const server = http.createServer(basic, (req, res) => {
     console.info('Requested by ' + req.connection.remoteAddress);
-
     if (req.url === '/logout') {
       res.writeHead(401, {
         'Content-Type': 'text/plain; charset=utf-8'
@@ -19,7 +16,6 @@ const server = http
       res.end('ログアウトしました');
       return;
     }
-
     res.writeHead(200, {
       'Content-Type': 'text/html; charset=utf-8'
     });
@@ -43,13 +39,11 @@ const server = http
             })
           );
         } else if (req.url === '/enquetes/sushi-pizza') {
-          res.write(
-            pug.renderFile('./form.pug', {
-              path: req.url,
-              firstItem: '寿司',
-              secondItem: 'ピザ'
-            })
-          );
+          res.write(pug.renderFile('./form.pug', {
+            path: req.url,
+            firstItem: '寿司',
+            secondItem: 'ピザ'
+          }));
         }
         res.end();
         break;
