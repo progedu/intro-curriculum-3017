@@ -6,6 +6,7 @@ html(lang="jp")
   body
     h1 どちらが食べたいですか？
     form(method="post", action=path)
+    a(href="/logout") ログアウト
       span 名前: 
       input(type="text", name="name")
       input(type="radio", name="favorite", value=firstItem)
