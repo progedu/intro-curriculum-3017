@@ -14,9 +14,11 @@ const server = http
 
     if (req.url === '/logout') {
       res.writeHead(401, {
-        'Content-Type': 'text/plain; charset=utf-8'
+        'Content-Type': 'text/html; charset=utf-8'
       });
-      res.end('ログアウトしました');
+      const link = '/enquetes/yaki-shabu'
+      res.write('<!DOCTYPE html><html lang="ja"><body><p>ログアウトしました</p><a href=' +link+ '>ログイン</a></body></html>');
+      res.end();
       return;
     }
 
