@@ -5,7 +5,7 @@ const auth = require('http-auth');
 const basic = auth.basic(
   { realm: 'Enquetes Area.' },
   (username, password, callback) => {
-    callback(username === 'guest' && password === 'xaXZJQmE');
+    callback(username === 'sifue' && password === 'eroi');
   });
 const server = http.createServer(basic, (req, res) => {
   const now = new Date();
