@@ -12,9 +12,9 @@ const server = http.createServer(basic, (req, res) => {
 
   if (req.url === '/logout') {
     res.writeHead(401, {
-      'Content-Type': 'text/plain; charset=utf-8'
+      'Content-Type': 'text/html; charset=utf-8'
     });
-    res.end('ログアウトしました');
+    res.end(`ログアウトしました<br><a href="../enquetes/yaki-shabu">再ログイン</a>`);
     return;
   }
 
@@ -54,7 +54,7 @@ const server = http.createServer(basic, (req, res) => {
         const decoded = decodeURIComponent(body);
         console.info('投稿: ' + decoded);
         res.write('<!DOCTYPE html><html lang="jp"><head><meta charset="utf-8"></head><body><h1>' +
-          decoded + 'が投稿されました</h1></body></html>');
+          decoded + 'が投稿されました</h1><br><a href="/logout">ログアウト</a></body></html>');
         res.end();
       });
       break;
