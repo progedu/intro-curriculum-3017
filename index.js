@@ -50,6 +50,8 @@ const server = http
               secondItem: 'ピザ'
             })
           );
+        } else {
+          res.write(pug.renderFile('./top.pug'));
         }
         res.end();
         break;
